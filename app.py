@@ -45,5 +45,10 @@ def game():
 
     return render_template("index.html", question=questions[0]["question"], options=questions[0]["options"], question_index=0)
 
+@app.route("/")
+def home():
+    return "Hello, Render!"
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Render provides a PORT environment variable
+    app.run(debug=False, host="0.0.0.0", port=port)
